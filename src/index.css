@@ -1,0 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
+@import '../src/components/login/_login.scss';
+
+body, h1, h2, h3, h4, h5, h6, p, span, button, input, textarea, select {
+    font-family: 'Lexend Deca', serif !important;
+  }

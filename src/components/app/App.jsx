@@ -1,11 +1,11 @@
-import { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Login from '../login/Login';
 
 function App() {
 
   return (
     <>
-      <h1>Hello world</h1>
+      <Login/>
     </>
   )
 }
