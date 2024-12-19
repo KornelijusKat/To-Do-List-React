@@ -1,13 +1,12 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Login from '../login/Login';
+import "bootstrap/dist/css/bootstrap.min.css";
+import Login from "../login/Login";
 
 function App() {
-
   return (
     <>
-      <Login/>
+      <Login />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
