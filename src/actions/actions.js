@@ -1,0 +1,1 @@
+export const TOGGLE_AUTH_VIEW = "TOGGLE_AUTH_VIEW";
