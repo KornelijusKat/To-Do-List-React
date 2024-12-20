@@ -1,0 +1,25 @@
+@import "../../styles/variables";
+
+.auth-form-container {
+  text-align: center;
+  margin-top: 20px;
+
+  .toggle-auth {
+    margin-top: 15px;
+    font-size: 14px; 
+    color: $text-color3;
+    text-align: center;
+
+    .toggle-button {
+      background: none;
+      border: none;
+      color: $primary-color; 
+      font-weight: bold;
+
+      &:hover {
+        color: $secondary-color; 
+        text-decoration: underline;
+      }
+    }
+  }
+}

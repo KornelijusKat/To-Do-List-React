@@ -1,6 +1,8 @@
 import { useGlobalContext } from "../../context/Context"
 import Login from "../login/Login"
 import Register from "../register/Register"
+import "./_authLayout.scss";
+
 
 
 const AuthLayout = () => {
