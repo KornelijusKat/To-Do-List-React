@@ -1,101 +1,55 @@
 @import "../../styles/variables";
 
-.register-container {
-  background: linear-gradient(to bottom, $background-color1, $background-color2);
+.text-center {
+  font-family: $font-family-primary;
+  text-align: center;
+  text-decoration-skip-ink: none;
+  max-width: 500px;
 
-  .text-center {
-    font-family: $font-family-primary;
-    text-align: center;
-    text-decoration-skip-ink: none;
-    max-width: 500px; // keičia visos formos max ploti
-
-    .image-container {
-      height: 300px;
-
-    .image {
-      width: 35px;
-      position: relative;
-    }
-
-    .statistics {
-      top: -10%;
-      left: 10%;
-      width: 5%;
-    }
-  
-    .calendar {
-      top: -30%;
-      right: -50%;
-    }
-  
-    .clock {
-      top: -35%;
-      left: 2%;
-      width: 10%;
-    }
-  
-    .coffee {
-      bottom: -25%;
-      left: -24%;
-      transform: scaleX(-1);
-      width: 5%;
-    }
-  
-    .files {
-      top: 10%;
-      right: -25%;
-      width: 15%
-    }
-  
-    .flowers {
-      bottom: -20%;
-      left: -40%;
-      width: 10%;
-    }
-
-    .person {
-      max-width: 150px;
-      height: auto;
-      position: relative;
-      left: -30%;
-
-    }
-
+  .form-control {
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
   }
-    
 
-    .form-control {
-      border-radius: 8px;
-      padding: 12px;
-      font-size: 16px;
+  .btn-primary {
+    background-color: $primary-color;
+    border: none;
+    border-radius: 14px;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 23.75px;
+    padding: 10px 0;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 1rem;
+      transform: translateY(-50%);
+      background-image: url("../../assets/icons/LoginArrow.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 1.5rem;
+      height: 1.5rem;
     }
 
-    .btn-primary {
-      background-color: $primary-color;
-      border: none;
-      border-radius: 14px;
-      font-size: 19px;
-      font-weight: 600;
-      line-height: 23.75px;
-      padding: 10px 0;
-      font-size: 18px;
-      transition: background-color 0.3s ease;
-      
-
-      &:hover {
-        background-color: $secondary-color;
-      }
+    &:hover {
+      background-color: $secondary-color;
     }
+  }
 
-    h1 {
-      font-size: 24px;
-      font-weight: 600;
-      line-height: 30px;
-      color: $text-color;
-    }
+  h1 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+    color: $text-color;
+  }
 
-    .text-danger {
-      font-size: 14px;
-    }
+  .text-danger {
+    font-size: 14px;
   }
 }

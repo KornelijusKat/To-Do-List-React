@@ -1,24 +1,84 @@
 @import "../../styles/variables";
 
-.auth-form-container {
-  text-align: center;
-  margin-top: 20px;
+.authlayout {
+  background: linear-gradient(
+    to bottom,
+    $background-color1,
+    $background-color2
+  );
 
-  .toggle-auth {
-    margin-top: 15px;
-    font-size: 14px; 
-    color: $text-color3;
+  .image-container {
+    height: 300px;
+
+    .image {
+      position: relative;
+    }
+
+    .statistics {
+      top: -10%;
+      left: 50px;
+      width: 26px;
+    }
+
+    .calendar {
+      top: -30%;
+      right: -240px;
+      width: 31.35px;
+      transform: rotate(13deg);
+    }
+
+    .clock {
+      top: -48%;
+      left: 5px;
+      width: 40px;
+    }
+
+    .coffee {
+      bottom: -28%;
+      left: -65px;
+      transform: scaleX(-1);
+      width: 18px;
+    }
+
+    .files {
+      top: 2%;
+      right: -120px;
+      transform: scaleX(-1);
+      width: 62px;
+    }
+
+    .flowers {
+      bottom: -23%;
+      left: -130px;
+      width: 36px;
+    }
+
+    .person {
+      left: -110px;
+      width: 159px;
+    }
+  }
+
+  .auth-form-container {
     text-align: center;
+    margin-top: 20px;
 
-    .toggle-button {
-      background: none;
-      border: none;
-      color: $primary-color; 
-      font-weight: bold;
+    .toggle-auth {
+      margin-top: 15px;
+      font-size: 14px;
+      color: $text-color3;
+      text-align: center;
 
-      &:hover {
-        color: $secondary-color; 
-        text-decoration: underline;
+      .toggle-button {
+        background: none;
+        border: none;
+        color: $primary-color;
+        font-weight: bold;
+
+        &:hover {
+          color: $secondary-color;
+          text-decoration: underline;
+        }
       }
     }
   }
