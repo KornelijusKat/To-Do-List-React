@@ -48,9 +48,9 @@ const Register = () => {
   
 
   return (
-    <div className="register-container d-flex align-items-center justify-content-center vh-100">
+    <div className="register-container d-flex align-items-center justify-content-center">
       <div className="text-center">
-        <div className="image-container">
+        <div className="image-container mt-5">
           <img
             src={statisticsImage}
             alt="Statistics"
@@ -71,7 +71,7 @@ const Register = () => {
           />
           <img src={personImage} alt="Person" className="person" />
         </div>
-        <h1 className="mb-3">Register & Make Your "To-Do List"</h1>
+        <h1 className="mb-2">Register & Make Your "To-Do List"</h1>
         <form onSubmit={submitHandler} className="form w-100">
           <div className="mb-3">
             <input
