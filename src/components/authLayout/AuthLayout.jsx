@@ -1,4 +1,6 @@
 import { useGlobalContext } from "../../context/Context";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth} from "../../services/AuthServices";
 import Login from "../login/Login";
 import Register from "../register/Register";
 import "./_authLayout.scss";
@@ -11,13 +13,24 @@ import flowersImage from "../../assets/img/flowers.png";
 import personImage from "../../assets/img/person.png";
 
 const AuthLayout = () => {
+  const [user, loading, error] = useAuthState(auth);
   const { state, dispatch } = useGlobalContext();
   const toggleAuthView = () => {
     dispatch({ type: "TOGGLE_AUTH_VIEW" });
   };
+
+  if(loading){
+    return(
+    <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
+      <div className="spinner-border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    );
+  }
   return (
     <div className="authlayout">
-      <div className="image-container mt-5 d-flex align-items-center justify-content-center">
+      <div className="image-container pt-5 d-flex align-items-center justify-content-center">
         <img
           src={statisticsImage}
           alt="Statistics"
