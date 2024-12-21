@@ -1,5 +1,4 @@
-@import "../../styles/variables";
-
+@use "../../styles/variables" as *;
 .text-center {
   font-family: $font-family-primary;
   text-align: center;

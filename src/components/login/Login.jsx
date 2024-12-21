@@ -4,12 +4,17 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, signInWithEmailPassword } from "../../services/AuthServices";
 
 const Login = () => {
+  const[errorMessage, setErrorMessage] = useState("");
+  const [user, loading, error] = useAuthState(auth);
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
+  const errorText = "Incorrect Email or Password"
+  const loginErrMessages =["auth/invalid-email", "auth/invalid-credential"]
+  const pwErrMessages = ["auth/missing-password", "auth/invalid-credential"]
 
-  const [user, loading, error] = useAuthState(auth);
+  
   // const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -25,14 +30,31 @@ const Login = () => {
     if (user) console.log("Veikia!");
   }, [loading, user]);
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     console.log(userData);
-    signInWithEmailPassword(userData.email, userData.password);
-  };
+    try{
+      setErrorMessage("")
+      await signInWithEmailPassword(userData.email, userData.password);
+    }catch(err){
+      setErrorMessage(err.code)
+      console.log(err.code)
+    }
+  }
+
+  const handleEmailError = () =>{
+     if(loginErrMessages.includes(errorMessage))return "border-danger";
+  return ""
+  }
+
+  const handlePasswordError = () =>{
+    if (pwErrMessages.includes(errorMessage))return "border-danger";
+    return ""
+  }
+
 
   return (
-    <div className="login-container d-flex align-items-center justify-content-center">
+    <div className="container login-container d-flex align-items-center justify-content-center">
       <div className="text-center">
         <h1 className="mb-3">Task Management & To-Do List</h1>
         <form onSubmit={submitHandler} className="form w-100">
@@ -40,7 +62,7 @@ const Login = () => {
             <input
               type="email"
               name="email"
-              className="form-control"
+              className={`form-control ${handleEmailError()}`}
               placeholder="Email"
               value={userData.email}
               onChange={handleChange}
@@ -51,18 +73,16 @@ const Login = () => {
             <input
               type="password"
               name="password"
-              className="form-control"
+              className={`form-control ${handlePasswordError()}`}
               placeholder="Password"
               value={userData.password}
               onChange={handleChange}
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary w-100 mb-1">
-            Login
-          </button>
-          <button className="btn btn-secondary w-100">
-            <a href="">Sign up</a>
+          {errorMessage && <p className="text-danger">{errorText}</p>}
+          <button type="submit" className="btn btn-primary w-100 mb-1" disabled={loading}>
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
       </div>

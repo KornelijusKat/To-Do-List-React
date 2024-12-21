@@ -1,5 +1,4 @@
-@import "../../styles/variables";
-
+@use "../../styles/variables" as *;
 .authlayout {
   background: linear-gradient(
     to bottom,

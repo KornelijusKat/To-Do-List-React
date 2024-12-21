@@ -16,14 +16,14 @@ const registerWithEmailAndPassword = async (name, email, password) => {
       email,
     });
   } catch (err) {
-    console.log(err);
+    throw err;
   }
 };
 const signInWithEmailPassword = async (email, password) => {
   try {
     await auth.signInWithEmailAndPassword(email, password);
   } catch (err) {
-    console.log(err);
+    throw err;
   }
 };
 const getUserData = (user, setUser) => {
