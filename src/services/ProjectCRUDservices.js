@@ -38,11 +38,3 @@ export const updateProject = (id, data) => { // save
     .doc(id)
     .set(data)
 }
-
-{/* <Router>
-  <Routes>
-    <Route path="/" element={<Projects />} />
-    <Route path="/add-project" element={<AddProject />} />
-    <Route path="/update-project/:id" element={<AddProject />} />
-  </Routes>
-</Router>; */}
