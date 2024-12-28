@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap");
 @import "../src/components/login/_login.scss";
-
+@import "../src//components/user/_user.scss";
+@import 'bootstrap-icons/font/bootstrap-icons.css';
 body,
 h1,
 h2,
