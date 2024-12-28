@@ -8,7 +8,7 @@ import Login from '../login/Login';
 import { ReactComponent as LoginArrow } from  "../../assets/icons/LoginArrow.svg" 
 import { ReactComponent as Notification} from  "../../assets/icons/notification.svg" 
 const AddProject = () =>{
-    const [user] = useAuthState(auth); 
+    const [user, loading] = useAuthState(auth); 
     const {id} = useParams();
     const [formData, setFormData] = useState({
         name:'',
@@ -17,6 +17,7 @@ const AddProject = () =>{
         to:'',
         uid:''
     })
+    const navigate = useNavigate()
     const handleChange = (e)=>{
         e.preventDefault();
         setFormData({
@@ -37,15 +38,22 @@ const AddProject = () =>{
             uid: user.uid
         })
     }
+    const handleNavigateHome = () =>{
+        navigate('/projects');
+    }
     useEffect(()=>{
-        id && service.showById(item=>setFormData(item), id);
-    },[id])
+        if(loading) 
+            return
+        console.log(user)
+        if(!user) 
+            navigate('/')
+    },[user, loading, navigate])
     return(
         <>
             <div className="container container-addproject">
                 <div className="row addproject-header d-flex justify-content-between">
                     <div className="col-3 text-start">
-                        <LoginArrow className='addproject-icon' id='addproject-icon--arrow' ></LoginArrow> 
+                        <LoginArrow className='addproject-icon' id='addproject-icon--arrow' onClick={handleNavigateHome}></LoginArrow> 
                     </div>
                     <div className="col-6">
                         <h1>Add Project</h1>
