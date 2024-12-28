@@ -1,12 +1,19 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import Login from "../login/Login";
-import Register from '../register/Register'
 import AuthLayout from "../authLayout/AuthLayout";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Projects from "../projects/Projects";
 
 function App() {
   return (
     <>
-      <AuthLayout></AuthLayout>
+      <Router>
+        <header>
+          <Routes>
+            <Route path="/" element={<AuthLayout/>}/>
+            <Route path="/projects" element={<Projects/>}/>
+          </Routes>
+        </header>
+      </Router>
     </>
   );
 }
