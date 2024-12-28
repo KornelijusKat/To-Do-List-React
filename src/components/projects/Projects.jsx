@@ -19,7 +19,7 @@ const Projects = () =>{
     },[user,loading])
 
     console.log(projects)
-
+    console.log('hi')
     return(
         <div className="container">
             <Header/>
