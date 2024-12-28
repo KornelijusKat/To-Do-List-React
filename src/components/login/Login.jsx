@@ -10,12 +10,10 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
   const errorText = "Incorrect Email or Password"
   const loginErrMessages =["auth/invalid-email", "auth/invalid-credential"]
   const pwErrMessages = ["auth/missing-password", "auth/invalid-credential"]
-
-  
-  // const navigate = useNavigate();
 
   const handleChange = (e) => {
     setUserData({
@@ -26,16 +24,16 @@ const Login = () => {
 
   useEffect(() => {
     if (loading) return;
-    // if(user) navigate("/works")
+    // if(user) navigate("/project")
     if (user) console.log("Veikia!");
   }, [loading, user]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(userData);
     try{
       setErrorMessage("")
       await signInWithEmailPassword(userData.email, userData.password);
+      if(user) navigate("/projects")
     }catch(err){
       setErrorMessage(err.code)
       console.log(err.code)

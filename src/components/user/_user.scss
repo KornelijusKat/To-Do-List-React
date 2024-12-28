@@ -1,0 +1,46 @@
+@use "../../styles/variables" as *;
+
+.nav-main{
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .nav-user{
+        display: flex;
+        justify-content: left;
+        flex-direction: row;
+        .user-icon{
+            border: 2px solid black;
+            border-radius: 50%;
+            width: 5em;
+            height: 5em;
+            background-image: url("https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/11/16/12/homer-simpson.jpeg?quality=75&width=1250&crop=3%3A2%2Csmart&auto=webp");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .user-info{
+            display: flex;
+            justify-content:flex-start;
+            flex-direction: column;
+            margin-left: 1em;
+            p{
+                margin: 0;
+            }
+        }
+    }
+
+    .nav-logout{
+        display: flex;
+        justify-content: right;
+        .user-logout {
+            background-color: $primary-color;
+            color: $background-color2;
+            transition: background-color 0.3s ease;
+            &:hover {
+                background-color: $secondary-color;
+              }
+        }
+
+    }
+}
