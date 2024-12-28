@@ -23,11 +23,11 @@ const Projects = () =>{
     return(
         <div className="container">
             <Header/>
-            {/* Reiks pataisyti kai prijungsim projects, kad jei nera rodytu "No Projects" ar pns */}
-            {projects.length > 0? <h1>Yra</h1> : 
+            {projects.length > 0? 
                 <div className="mt-4">
                     <ProjectList data={projects}/>
-                </div>
+                </div> : 
+                <h1>No projects</h1>
             }
         </div>
     )

@@ -12,23 +12,21 @@ const Project =(props) =>{
 
     return(
         <>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-                <div class="card h-100">
-                    <div class="card-body d-flex justify-content-between align-items-start">
+            <div className="col">
+                <div className="card h-100">
+                    <div className="card-body d-flex justify-content-between align-items-start">
                         <div>
-                            <h5 class="card-title">Project Name</h5>
-                            <p class="card-text mb-1"><strong>Start Date:</strong> 2024-01-01</p>
-                            <p class="card-text mb-1"><strong>End Date:</strong> 2024-12-31</p>
-                            <p class="card-text text-secondary">10 Tasks</p>
+                            <h5 className="card-title">{props.name}</h5>
+                            <p className="card-text mb-1"><strong>Start Date:</strong>{props.from}</p>
+                            <p className="card-text mb-1"><strong>End Date:</strong>{props.to}</p>
+                            <p className="card-text text-secondary">10 Tasks</p>
                         </div>
-                        <button class="btn btn-sm btn-outline-danger border-0" onclick={deleteHandler}>
+                        <button className="btn btn-sm btn-outline-danger border-0" onClick={deleteHandler}>
                             <i className="bi bi-trash"></i>
                         </button>
                     </div>
                 </div>
             </div>
-        </div>
         </>
     )
 }
