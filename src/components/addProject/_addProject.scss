@@ -1,0 +1,33 @@
+@use "../../styles/variables" as *;
+.container-addproject{
+    margin:auto;
+    padding:34px;
+    .addproject-header{
+        font-size: 19px;
+        font-weight: 600;
+        line-height: 23.75px;
+        text-align: center;
+        .addproject-icon{     
+            height:50px;
+            fill: $text-color;
+            
+        }
+        #addproject-icon--arrow{
+            transform: rotate(180deg)
+        }
+    }
+    .btn{
+        width:100%;
+        border:none;
+        background-color: $primary-color;
+        font-size: 19px;
+        font-weight: 600;
+        line-height: 23.75px;
+        color:#ffffff;
+        border-radius: 14px;
+
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        background: url("../../assets/icons/Triangle.svg") no-repeat;
+      }
+}
