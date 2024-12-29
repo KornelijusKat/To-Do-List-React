@@ -5,13 +5,14 @@ import { useAuthState} from "react-firebase-hooks/auth"
 import {auth} from "../../services/AuthServices"
 import Header from "../app/header/Header";
 import ProjectList from "../projectList/ProjectList";
+import Loading from "../loading/Loading";
 
 const Projects = () =>{
     const[projects, setProjects] = useState([])
     const[user, loading, error] = useAuthState(auth)
     
     useEffect(()=>{
-        if(loading) return;
+        if(loading) return (<Loading/>);
         if(user){
             service.getAllProjects(projects=>
                 setProjects(projects), user
@@ -27,7 +28,9 @@ const Projects = () =>{
                 <div className="mt-4">
                     <ProjectList data={projects}/>
                 </div> : 
-                <h1>No projects</h1>
+                <div className="mt-4">
+                    <h1>No projects</h1>
+                </div>
             }
         </div>
     )
