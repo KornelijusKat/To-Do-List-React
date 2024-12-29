@@ -4,10 +4,11 @@ export const addProject = (data) => {
   firebase.firestore().collection('projects').add(data);
 };
 
-export const getAllProjects = (onProjectsChanged) => {
+export const getAllProjects = (onProjectsChanged, user) => {
   firebase
     .firestore()
     .collection('projects')
+    .where("uid", "==", user?.uid)
     .onSnapshot((snapshot) => {
       const newProject = snapshot.docs.map((doc) => ({
         id: doc.id,
