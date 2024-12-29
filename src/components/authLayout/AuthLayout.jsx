@@ -11,6 +11,7 @@ import coffeeImage from "../../assets/img/coffee.png";
 import filesImage from "../../assets/img/files.png";
 import flowersImage from "../../assets/img/flowers.png";
 import personImage from "../../assets/img/person.png";
+import Loading from "../loading/Loading";
 
 const AuthLayout = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -20,13 +21,7 @@ const AuthLayout = () => {
   };
 
   if(loading){
-    return(
-    <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
-      <div className="spinner-border" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </div>
-    </div>
-    );
+    return(<Loading/>);
   }
   return (
     <div className="authlayout">
