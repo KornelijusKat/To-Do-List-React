@@ -13,6 +13,10 @@ const User =()=>{
         getUserData(user, setUserData)
     },[user, loading ])
 
+    const handleClick = () =>{
+        navigate('/addproject')
+    }
+
     return(
         <div className="row nav-main">
             <div className="col nav-user">
@@ -23,6 +27,7 @@ const User =()=>{
                 </div>
             </div>
             <div className="col nav-logout">
+                <button className="btn user-logout me-1" onClick={handleClick}>Add Project</button>
                 <button className="btn user-logout" onClick={logout}>Logout</button>
             </div>
         </div>
