@@ -13,6 +13,7 @@ function App() {
             <Route path="/" element={<AuthLayout/>}/>
             <Route path="/projects" element={<Projects/>}/>
             <Route path='/addproject' element={<AddProject/>}/>
+            <Route path='/updateproject/:id' element={<AddProject></AddProject>}></Route>
           </Routes>
       
       </Router>
