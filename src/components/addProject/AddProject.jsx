@@ -61,7 +61,7 @@ const AddProject = () =>{
                         <LoginArrow className='addproject-icon' id='addproject-icon--arrow' onClick={handleNavigateHome}></LoginArrow> 
                     </div>
                     <div className="col-6">
-                        <h1>{(id)?"Keisti projektą":"Pridėti projektą"}</h1>
+                        <h1>{(id)?"Edit Your Project":"Add Project"}</h1>
                     </div>
                     <div className="col-3 text-end">
                         <Notification className='addproject-icon'></Notification>
@@ -69,23 +69,23 @@ const AddProject = () =>{
                 </div>
                 <form className='form' onSubmit={submitHandler}>
                         <div className="mb-3">
-                            <label htmlFor='name'>Projekto pavadinimas</label>
-                            <input type='text' name='name'className='form-control' placeholder="įrašykite projekto pavadinimą" onChange={handleChange} value={formData.name}></input>
+                            <label htmlFor='name'>Project Name</label>
+                            <input type='text' name='name'className='form-control' placeholder="Enter project name" onChange={handleChange} value={formData.name}></input>
                         </div>
                         <div className="mb-3">
-                            <label htmlFor='description'>Projekto aprašas</label>
+                            <label htmlFor='description'>Projekct Description</label>
                             <textarea name="description" className="form-control" onChange={handleChange} value={formData.description}></textarea>
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="from">Projekto pradžia:</label>
+                            <label htmlFor="from">Project Start:</label>
                             <input type="date" name="from" className="form-control" onChange={handleChange}  value={formData.from}/>
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="to">Projekto pabaiga:</label>
+                            <label htmlFor="to">Project End:</label>
                             <input type="date" name="to" className="form-control" onChange={handleChange} value={formData.to}/>
                         </div>
                         <div className="mb-3">
-                            <button type="submit" className="btn btn-primary">{(id)?"Atnaujinti":"Saugoti"}</button>
+                            <button type="submit" className="btn btn-primary">{(id)?"Update":"Save"}</button>
                         </div>
                 </form>
             </div> 

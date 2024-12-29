@@ -11,13 +11,16 @@ import coffeeImage from "../../assets/img/coffee.png";
 import filesImage from "../../assets/img/files.png";
 import flowersImage from "../../assets/img/flowers.png";
 import personImage from "../../assets/img/person.png";
+import { useNavigate } from "react-router-dom";
 import Loading from "../loading/Loading";
 
 const AuthLayout = () => {
   const [user, loading, error] = useAuthState(auth);
   const { state, dispatch } = useGlobalContext();
+  const navigate = useNavigate();
   const toggleAuthView = () => {
     dispatch({ type: "TOGGLE_AUTH_VIEW" });
+    navigate(state.isLogin ? "/register" : "/login");
   };
 
   if(loading){

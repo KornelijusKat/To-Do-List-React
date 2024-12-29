@@ -32,8 +32,11 @@ const Login = () => {
     e.preventDefault();
     try{
       setErrorMessage("")
-      await signInWithEmailPassword(userData.email, userData.password);
-      if(user) navigate("/projects")
+      let response = await signInWithEmailPassword(userData.email, userData.password);
+      console.log('herlo')
+      console.log(response)
+      if(response) 
+        navigate("/projects")
     }catch(err){
       setErrorMessage(err.code)
       console.log(err.code)

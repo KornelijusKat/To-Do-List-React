@@ -19,7 +19,7 @@ const Register = () => {
   const [errorText, setErrorText] = useState("")
   const [errorMessage, setErrorMessage] = useState(""); // Error handling
   const [user, loading] = useAuthState(auth); // Firebase auth
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const emailErrMessages = ["auth/email-already-in-use", "auth/invalid-email"]
   const pwErrMessages = ["auth/weak-password", "auth/no-match-password"]
 
@@ -41,11 +41,15 @@ const Register = () => {
     try{
       setErrorMessage("");
       setErrorText("")
-      await registerWithEmailAndPassword(
+      let result = await registerWithEmailAndPassword(
         userData.name,
         userData.email,
         userData.password
       );
+      console.log(result)
+      if(user) 
+        console.log('works')
+        navigate("/projects")
     }catch(err){
       if(emailErrMessages.includes(err.code)) setErrorText("Email in use!");
       if(pwErrMessages.includes(err.code)) setErrorText("Weak password!");
@@ -54,7 +58,7 @@ const Register = () => {
       console.log(err)
     }
   };
-  console.log(submitHandler)
+
 
   const handleEmailError = () =>{
     if(emailErrMessages.includes(errorMessage) || errorMessage == "true")return "border-danger";
