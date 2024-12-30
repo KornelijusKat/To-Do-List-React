@@ -1,0 +1,31 @@
+@use "../variables" as *;
+
+@mixin button-styles($bg-color, $hover-color) {
+  background-color: $bg-color;
+  border: none;
+  border-radius: 14px;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 23.75px;
+  padding: 10px 0;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    background-image: url($button-arrow-icon);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  &:hover {
+    background-color: $hover-color;
+  }
+}

@@ -1,0 +1,8 @@
+@use "../variables" as *;
+
+@mixin text-center($max-width: 500px, $font-family: $font-family-primary) {
+  font-family: $font-family;
+  text-align: center;
+  max-width: $max-width;
+  text-decoration-skip-ink: none;
+}
