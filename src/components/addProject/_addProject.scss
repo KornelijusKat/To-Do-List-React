@@ -1,5 +1,10 @@
 @use "../../styles/variables" as *;
 .container-addproject{
+    background: linear-gradient(
+        to bottom,
+        $background-color1,
+        $background-color2
+      );
     margin:auto;
     padding:34px;
     .addproject-header{

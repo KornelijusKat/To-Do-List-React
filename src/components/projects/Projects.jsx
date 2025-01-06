@@ -12,15 +12,12 @@ const Projects = () =>{
     const[user, loading, error] = useAuthState(auth)
     
     useEffect(()=>{
-        if(loading) return (<Loading/>);
+      
         if(user){
             service.getAllProjects(projects=>
                 setProjects(projects), user
             )}
     },[user,loading])
-
-    console.log(projects)
-    console.log('hi')
     return(
         <div className="container">
             <Header/>

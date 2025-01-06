@@ -6,8 +6,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import './_addProject.scss'
 import { ReactComponent as LoginArrow } from  "../../assets/icons/LoginArrow.svg" 
 import { ReactComponent as Notification} from  "../../assets/icons/notification.svg" 
+import { useGlobalContext } from '../../context/Context';
+import validateAddProject from '../../helpers/validateAddProject';
 const AddProject = () =>{
     const [user, loading, error] = useAuthState(auth); 
+    const {dispatch} = useGlobalContext();
     const {id} = useParams();
     const [formData, setFormData] = useState({
         name:'',
@@ -26,19 +29,23 @@ const AddProject = () =>{
     }
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log(user);
-        console.log(formData);
         if (!user) {
             console.error("User is not logged in.");
             return;
         }
+        if(!validateAddProject(formData)){
+            return;
+        }
         if(id){
-            service.updateProject(id,formData)
+            dispatch({
+                type: "UPDATE_PROJECT",
+                payload: service.updateProject(id, formData),
+            });
         }else{
-            service.addProject({
+            dispatch({type:"ADD_PROJECT", payload:service.addProject({
                 ...formData,
                 uid:user.uid
-            })
+            })})
         }
         navigate('/projects')
     }

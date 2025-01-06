@@ -3,7 +3,8 @@ import reducer from '../reducers/reducer';
 
 const AppContext = createContext(null);
 const initialState = {
-    isLogin: true
+    isLogin: true,
+    projects: []
 }
 const AppProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initialState)
