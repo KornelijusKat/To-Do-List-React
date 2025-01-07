@@ -6,24 +6,19 @@ import {auth} from "../../services/AuthServices"
 import Header from "../app/header/Header";
 import ProjectList from "../projectList/ProjectList";
 import Loading from "../loading/Loading";
+import { useGlobalContext } from "../../context/Context";
 
 const Projects = () =>{
-    const[projects, setProjects] = useState([])
+    //const[projects, setProjects] = useState([])
     const[user, loading, error] = useAuthState(auth)
-    
-    useEffect(()=>{
-      
-        if(user){
-            service.getAllProjects(projects=>
-                setProjects(projects), user
-            )}
-    },[user,loading])
+    const {state, dispatch } = useGlobalContext();
     return(
         <div className="container">
+            {console.log(state)}
             <Header/>
-            {projects.length > 0? 
+            {state.projects.length > 0? 
                 <div className="mt-4">
-                    <ProjectList data={projects}/>
+                    <ProjectList data={state.projects}/>
                 </div> : 
                 <div className="mt-4">
                     <h1>No projects</h1>

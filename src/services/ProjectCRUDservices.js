@@ -5,6 +5,7 @@ export const addProject = (data) => {
 };
 
 export const getAllProjects = (onProjectsChanged, user) => {
+  console.log(user)
   firebase
     .firestore()
     .collection('projects')

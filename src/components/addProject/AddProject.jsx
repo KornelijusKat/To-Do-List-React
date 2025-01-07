@@ -11,7 +11,7 @@ import validateAddProject from '../../helpers/validateAddProject';
 const AddProject = () =>{
     const [user, loading, error] = useAuthState(auth); 
     const {dispatch} = useGlobalContext();
-    const {id} = useParams();
+    const { id } = useParams();
     const [formData, setFormData] = useState({
         name:'',
         description:'',
@@ -19,6 +19,7 @@ const AddProject = () =>{
         to:'',
         uid:''
     })
+    console.log(`${id} hi`);
     const navigate = useNavigate()
     const handleChange = (e)=>{
         e.preventDefault();
@@ -39,7 +40,7 @@ const AddProject = () =>{
         if(id){
             dispatch({
                 type: "UPDATE_PROJECT",
-                payload: service.updateProject(id, formData),
+                payload:{id, ...service.updateProject(id, formData)}
             });
         }else{
             dispatch({type:"ADD_PROJECT", payload:service.addProject({

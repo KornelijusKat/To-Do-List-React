@@ -3,6 +3,8 @@ const reducer = (state, action) => {
         case "TOGGLE_AUTH_VIEW": {
             return { ...state, isLogin: !state.isLogin}
         }
+        case "SET_PROJECTS":
+            return { ...state, projects: action.payload }
         case "ADD_PROJECT":
             return {
                 ...state,
