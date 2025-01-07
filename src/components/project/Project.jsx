@@ -9,14 +9,14 @@ const Project =(props) =>{
         service.deleteProject(props.id);
         navigate('/projects');
     }
-
     return(
         <>
-            <div className="col">
+            <div className="col" key={props.id}>
             <div className="card h-100">
     <div className="card-body d-flex justify-content-between align-items-start">
         <div>
             <h5 className="card-title">{props.name}</h5>
+            <p>{props.id}</p>
             <p className="card-text mb-1"><strong>Start Date:</strong> {props.from}</p>
             <p className="card-text mb-1"><strong>End Date:</strong> {props.to}</p>
             <p className="card-text text-secondary">10 Tasks</p>
