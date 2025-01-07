@@ -1,4 +1,4 @@
-@use "../../styles/mixins/button" as *;
+@use "../../styles/mixins/button-with-arrow" as *;
 @use "../../styles/variables" as *;
 @use "../../styles/mixins/text-center" as *;
 @use "../../styles/mixins/form-control" as *;
@@ -11,7 +11,7 @@
   }
 
   .btn-primary {
-    @include button-styles($primary-color, $secondary-color);
+    @include buttonBaseArrow($primary-color, $secondary-color);
   }
 
   h1 {
