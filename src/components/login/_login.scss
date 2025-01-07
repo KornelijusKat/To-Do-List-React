@@ -1,67 +1,20 @@
+@use "../../styles/mixins/button" as *;
 @use "../../styles/variables" as *;
+@use "../../styles/mixins/text-center" as *;
+@use "../../styles/mixins/form-control" as *;
+
+
 .text-center {
-  font-family: $font-family-primary;
-  text-align: center;
-  text-decoration-skip-ink: none;
-  max-width: 500px;
+  @include text-center();
 
   .form-control {
-    border-radius: 8px;
-    padding: 12px;
-    font-size: 16px;
+    @include form-control-style();
   }
 
   .btn-primary {
-    background-color: $primary-color;
-    border: none;
-    border-radius: 14px;
-    font-size: 19px;
-    font-weight: 600;
-    line-height: 23.75px;
-    padding: 10px 0;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
-    position: relative;
-
-    &:hover {
-      background-color: $secondary-color;
-    }
-    &::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      right: 1rem;
-      transform: translateY(-50%);
-      background-image: url("../../assets/icons/LoginArrow.svg");
-      background-size: contain;
-      background-repeat: no-repeat;
-      width: 1.5rem;
-      height: 1.5rem;
-    }
+    @include button-styles($primary-color, $secondary-color);
   }
-
-  .btn-secondary {
-    background-color: $background-color1;
-    border: none;
-    border-radius: 14px;
-    font-size: 19px;
-    font-weight: 600;
-    line-height: 23.75px;
-    padding: 10px 0;
-    font-size: 18px;
-
-    &:hover {
-      background-color: $primary-color;
-      a {
-        color: $text-color2;
-      }
-    }
-    a {
-      text-decoration: none;
-      color: $primary-color;
-    }
-  }
-
+  
   h1 {
     font-size: 24px;
     font-weight: 600;
