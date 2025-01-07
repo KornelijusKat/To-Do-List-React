@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, signInWithEmailPassword } from "../../services/AuthServices";
+import { useGlobalContext } from "../../context/Context";
 
 const Login = () => {
-  const[errorMessage, setErrorMessage] = useState("");
-  const [user, loading, error] = useAuthState(auth);
+  const {firebaseAuthErrors} = useGlobalContext()
+  const [errorMessage, setErrorMessage] = useState("");
+  const [user, loading] = useAuthState(auth);
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
   const navigate = useNavigate();
-  const errorText = "Incorrect Email or Password"
-  const loginErrMessages =["auth/invalid-email", "auth/invalid-credential"]
-  const pwErrMessages = ["auth/missing-password", "auth/invalid-credential"]
+
 
   const handleChange = (e) => {
     setUserData({
@@ -24,8 +24,6 @@ const Login = () => {
 
   useEffect(() => {
     if (loading) return;
-    // if(user) navigate("/project")
-    if (user) console.log("Veikia!");
   }, [loading, user]);
 
   const submitHandler = async (e) => {
@@ -33,24 +31,18 @@ const Login = () => {
     try{
       setErrorMessage("")
       let response = await signInWithEmailPassword(userData.email, userData.password);
-      console.log('herlo')
       console.log(response)
       if(response) 
         navigate("/projects")
     }catch(err){
-      setErrorMessage(err.code)
+      setErrorMessage(firebaseAuthErrors[err.code] || "Something's wrong")
       console.log(err.code)
     }
   }
 
-  const handleEmailError = () =>{
-     if(loginErrMessages.includes(errorMessage))return "border-danger";
+  const handleError = () =>{
+     if(errorMessage)return "border-danger";
   return ""
-  }
-
-  const handlePasswordError = () =>{
-    if (pwErrMessages.includes(errorMessage))return "border-danger";
-    return ""
   }
 
 
@@ -63,7 +55,7 @@ const Login = () => {
             <input
               type="email"
               name="email"
-              className={`form-control ${handleEmailError()}`}
+              className={`form-control ${handleError()}`}
               placeholder="Email"
               value={userData.email}
               onChange={handleChange}
@@ -74,14 +66,14 @@ const Login = () => {
             <input
               type="password"
               name="password"
-              className={`form-control ${handlePasswordError()}`}
+              className={`form-control ${handleError()}`}
               placeholder="Password"
               value={userData.password}
               onChange={handleChange}
               required
             />
           </div>
-          {errorMessage && <p className="text-danger">{errorText}</p>}
+          {errorMessage && <p className="text-danger">{errorMessage}</p>}
           <button type="submit" className="btn btn-primary w-100 mb-1" disabled={loading}>
             {loading ? "Logging in..." : "Login"}
           </button>

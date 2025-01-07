@@ -6,6 +6,7 @@ import {
   registerWithEmailAndPassword,
 } from "../../services/AuthServices";
 import "./_register.scss";
+import { useGlobalContext } from "../../context/Context";
 
 
 const Register = () => {
@@ -14,14 +15,12 @@ const Register = () => {
     email: "",
     password: "",
   });
-
+  const { firebaseAuthErrors } = useGlobalContext()
   const [confirmPassword, setConfirmPassword] = useState(""); // Separate confirmPassword state
-  const [errorText, setErrorText] = useState("")
   const [errorMessage, setErrorMessage] = useState(""); // Error handling
   const [user, loading] = useAuthState(auth); // Firebase auth
   const navigate = useNavigate();
-  const emailErrMessages = ["auth/email-already-in-use", "auth/invalid-email"]
-  const pwErrMessages = ["auth/weak-password", "auth/no-match-password"]
+
 
   const handleChange = (e) => {
     setUserData({
@@ -33,46 +32,33 @@ const Register = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     if (userData.password !== confirmPassword) {
-      setErrorText("Passwords do not match!");
-      setErrorMessage("true")
-      console.log(setErrorText)
+      setErrorMessage("Passwords do not match!")
       return;
     }
     try{
       setErrorMessage("");
-      setErrorText("")
       let result = await registerWithEmailAndPassword(
         userData.name,
         userData.email,
         userData.password
       );
       console.log(result)
-      if(user) 
-        console.log('works')
-        navigate("/projects")
     }catch(err){
-      if(emailErrMessages.includes(err.code)) setErrorText("Email in use!");
-      if(pwErrMessages.includes(err.code)) setErrorText("Weak password!");
-      setErrorMessage(err.code)
+      setErrorMessage(firebaseAuthErrors[err.code] || "Something's wrong")
       console.log(err.code)
-      console.log(err)
     }
   };
 
 
-  const handleEmailError = () =>{
-    if(emailErrMessages.includes(errorMessage) || errorMessage == "true")return "border-danger";
-  return ""
-  }
-  const handlePasswordError = () =>{
-    if(pwErrMessages.includes(errorMessage) || errorMessage == "true")return "border-danger";
-  return ""
-  }
+  const handleError = () =>{
+    if(errorMessage)return "border-danger";
+ return ""
+ }
 
-  // useEffect(() => {
-  //   if (loading) return;
-  //   if (user) navigate("/works");
-  // }, [loading, user, navigate]);
+  useEffect(() => {
+    if (loading) return;
+    if (user) navigate("/projects");
+  }, [loading, user, navigate]);
 
   return (
     <div className="container register-container d-flex align-items-center justify-content-center">
@@ -94,7 +80,7 @@ const Register = () => {
             <input
               type="email"
               name="email"
-              className={`form-control ${handleEmailError()}`}
+              className={`form-control ${handleError()}`}
               placeholder="Email"
               value={userData.email}
               onChange={handleChange}
@@ -105,7 +91,7 @@ const Register = () => {
             <input
               type="password"
               name="password"
-              className={`form-control ${handlePasswordError()}`}
+              className={`form-control ${handleError()}`}
               placeholder="Password"
               value={userData.password}
               onChange={handleChange}
@@ -115,14 +101,14 @@ const Register = () => {
           <div className="mb-3">
             <input
               type="password"
-              className={`form-control ${handlePasswordError()}`}
+              className={`form-control ${handleError()}`}
               placeholder="Confirm Password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
           </div>
-          {errorMessage && <p className="text-danger">{errorText}</p>}
+          {errorMessage && <p className="text-danger">{errorMessage}</p>}
           <button  type="submit" className="btn btn-primary w-100" disabled={loading}>
             {loading ? "Registering..." : "Register"}
           </button>
