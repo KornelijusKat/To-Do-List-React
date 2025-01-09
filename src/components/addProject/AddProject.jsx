@@ -43,10 +43,10 @@ const AddProject = () =>{
                 payload:{id, ...service.updateProject(id, formData)}
             });
         }else{
-            dispatch({type:"ADD_PROJECT", payload:service.addProject({
+           service.addProject({
                 ...formData,
                 uid:user.uid
-            })})
+            })
         }
         navigate('/projects')
     }
