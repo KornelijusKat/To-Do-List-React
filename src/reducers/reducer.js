@@ -10,6 +10,21 @@ const reducer = (state, action) => {
                 ...state,
                 projects: [...state.projects, action.payload],
             }
+        case "UPDATE_TASK":
+            return{
+                ...state,
+                projects: state.projects.map(project =>
+                    project.id === action.payload.id ? {
+                        ...project,
+                        tasks: project.tasks.map(task =>
+                            task.id === action.payload.taskId
+                                ?{ ...task, ...action.payload.data}
+                                : task
+                        )
+                    }
+                    : project 
+                )
+            }
         case "UPDATE_PROJECT":
             return {
                 ...state,

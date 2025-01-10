@@ -5,6 +5,7 @@ import Projects from "../projects/Projects";
 import AddProject from "../addProject/AddProject";
 import Login from "../login/Login";
 import Register from "../register/Register";
+import AddTask from "../addTask/AddTask";
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
             <Route path="/projects" element={<Projects/>}/>
             <Route path='/addproject' element={<AddProject/>}/>
             <Route path='/updateproject/:id' element={<AddProject></AddProject>}></Route>
+            <Route path='/projects/:id/addtask'element={<AddTask></AddTask>}></Route>
+            <Route path='/project/:id/updatetask/:taskId' element={<AddTask></AddTask>}></Route>
           </Routes>
       </Router>
     </>
