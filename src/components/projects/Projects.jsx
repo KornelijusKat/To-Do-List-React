@@ -5,11 +5,9 @@ import { useAuthState} from "react-firebase-hooks/auth"
 import {auth} from "../../services/AuthServices"
 import Header from "../app/header/Header";
 import ProjectList from "../projectList/ProjectList";
-import Loading from "../loading/Loading";
 import { useGlobalContext } from "../../context/Context";
 
 const Projects = () =>{
-    //const[projects, setProjects] = useState([])
     const[user, loading, error] = useAuthState(auth)
     const {state, dispatch } = useGlobalContext();
     return(

@@ -4,11 +4,7 @@ import * as service from "../../services/ProjectCRUDservices";
 const Project =(props) =>{
     const navigate = useNavigate();
     const {id} = useParams();
-    
-    const deleteHandler = ()=>{
-        service.deleteProject(props.id);
-        navigate('/projects');
-    }
+
     return(
         <>
             <div className="col" key={props.id}>
@@ -28,12 +24,12 @@ const Project =(props) =>{
             >
                 <i className="bi bi-pencil"></i>
             </Link>
-            <button
-                className="btn btn-sm btn-outline-danger border-0"
-                onClick={deleteHandler}
+            <Link
+                to={`/projectview/${props.id}`}
+                className="btn btn-sm btn-outline-primary border-0 me-2"
             >
-                <i className="bi bi-trash"></i>
-            </button>
+                <i className="bi bi-clipboard"></i>
+            </Link>
         </div>
     </div>
 </div>
