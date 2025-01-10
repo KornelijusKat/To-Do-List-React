@@ -1,6 +1,8 @@
 import firebase from "../firebase";
 
 export const addTask = (projectId, data) => {
+  console.log(projectId)
+  console.log(data)
   firebase.firestore()
     .collection('projects')
     .doc(projectId)

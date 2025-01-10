@@ -34,7 +34,7 @@ const AppProvider = ({children}) => {
 
     useEffect(() => {
         if (loading) return;
-
+        console.log(initialState.projects)
         const fetchData = async () => {
           if (user) {
             try {
