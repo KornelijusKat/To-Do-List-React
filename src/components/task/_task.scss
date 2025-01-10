@@ -1,0 +1,30 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins/button-base" as *;
+
+.task {
+    background: $background-color2;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    width: 100%; 
+    margin: 1rem auto;
+
+    p {
+        font-size: 14px;
+        margin-bottom: 0.5rem;
+
+        strong {
+            font-weight: bold;
+        }
+    }
+
+    .btn {
+        margin-top: 1rem;
+        width: auto;
+        padding: 0.5rem 1rem; 
+        text-align: center;
+        @include buttonBaseStyle($primary-color, $secondary-color);
+        max-width: 200px;
+        padding: 1rem 2rem;
+    }
+}
