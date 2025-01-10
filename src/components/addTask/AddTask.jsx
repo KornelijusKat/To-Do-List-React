@@ -35,18 +35,16 @@ const AddTask = ()=>{
         }
       
         if(taskId){
-            dispatch({
-                type: "UPDATE_TASK",
-                payload:{id, ...service.updateTask(id , taskId ,formData)}
-            });
+            service.updateTask(id , taskId ,formData)
+          
         }else{
             console.log(formData)
             service.addTask(id, formData)
         }
-        navigate('/projects')
+        navigate(`/projectview/${id}`)
     }
     const handleNavigateHome = () =>{
-        navigate('/projects');
+        navigate(`/projectview/${id}`);
     }
     return(
          <div className="container container-addproject">
