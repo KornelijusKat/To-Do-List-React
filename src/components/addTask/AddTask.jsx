@@ -17,7 +17,7 @@ const AddTask = ()=>{
         description:'',
         to:'',
         priority:'',
-        status: 'toDo'
+        status: false
     })
     console.log(`${id} hi`);
     const navigate = useNavigate()
@@ -32,7 +32,7 @@ const AddTask = ()=>{
         e.preventDefault();
         if (!user) {
             console.error("User is not logged in.");
-            return;
+            navigate('/')
         }
       
         if(taskId){
@@ -74,7 +74,8 @@ const AddTask = ()=>{
                                     <input type="date" name="to" className="form-control" onChange={handleChange} value={formData.to}/>
                                 </div>
                                 <div className="mb-3">
-                                    <select name="priority" className="form-control" onChange={handleChange} value={formData.priority}>
+                                    <select name="priority" className="form-control" onChange={handleChange} value={formData.priority} required>
+                                        <option value='' disabled >--select priority--</option>
                                         <option value="low">Low</option>
                                         <option value="medium">Medium</option>
                                         <option value="high">High</option>
