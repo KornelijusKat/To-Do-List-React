@@ -12,17 +12,27 @@ function App() {
   return (
     <>
       <Router>
-          <Routes>
-            <Route path="/" element={<AuthLayout/>}/>
-            <Route path="login" element={<Login />}/>
-            <Route path="register" element={<Register />}/>
-            <Route path="/projects" element={<Projects/>}/>
-            <Route path="/projectview/:id" element={<ProjectView/>}/>
-            <Route path='/addproject' element={<AddProject/>}/>
-            <Route path='/updateproject/:id' element={<AddProject></AddProject>}></Route>
-            <Route path='/projects/:id/addtask'element={<AddTask></AddTask>}></Route>
-            <Route path='/project/:id/updatetask/:taskId' element={<AddTask></AddTask>}></Route>
-          </Routes>
+        <Routes>
+          <Route path="/" element={<AuthLayout />}>
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+          </Route>
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projectview/:id" element={<ProjectView />} />
+          <Route path="/addproject" element={<AddProject />} />
+          <Route
+            path="/updateproject/:id"
+            element={<AddProject></AddProject>}
+          ></Route>
+          <Route
+            path="/projects/:id/addtask"
+            element={<AddTask></AddTask>}
+          ></Route>
+          <Route
+            path="/project/:id/updatetask/:taskId"
+            element={<AddTask></AddTask>}
+          ></Route>
+        </Routes>
       </Router>
     </>
   );

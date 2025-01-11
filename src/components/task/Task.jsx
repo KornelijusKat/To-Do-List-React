@@ -1,4 +1,5 @@
 import { Link, useParams } from "react-router-dom";
+import "./_task.scss";
 
 
 
@@ -7,7 +8,7 @@ const Task = (props) =>{
     console.log(props.id)
     return (
         
-        <div className="task m-1">
+        <div className="card task">
             <p><strong>Name:</strong> {props.name}</p>
             <p><strong>description:</strong> {props.description}</p>
             <p><strong>Priority:</strong> {props.priority}</p>

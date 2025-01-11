@@ -5,6 +5,7 @@ import {auth} from "../../services/AuthServices"
 import Task from "../task/Task";
 import Loading from "../loading/Loading";
 import { Link } from "react-router-dom";
+import "./_tasks.scss";
 
 const Tasks = ({projectId}) => {
     const [tasks, setTasks] = useState([]);
@@ -22,10 +23,11 @@ const Tasks = ({projectId}) => {
         <div>
             <Link
                 to={`/projects/${projectId}/addtask`}
-                className="btn btn-sm btn-outline-primary border-0 me-2"
+                className="add-task-btn"
             >
                 Add Task
             </Link>
+            <div className="tasks-container">
             {tasks?.map(task => (
                 <Task
                     key={task.id}
@@ -36,6 +38,7 @@ const Tasks = ({projectId}) => {
                     to={task.to}
                 />
             ))}
+            </div>
         </div>
     );
     
