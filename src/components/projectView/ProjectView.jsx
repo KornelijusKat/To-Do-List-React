@@ -53,22 +53,16 @@ const ProjectView = () => {
             All
         </button>
         <button
-            className={`btn ${statusFilter === "toDo" ? "btn-primary" : "btn-secondary"}`}
-            onClick={() => setStatusFilter("toDo")}
+            className={`btn ${statusFilter === false ? "btn-primary" : "btn-secondary"}`}
+            onClick={() => setStatusFilter(false)}
         >
-            ToDo
+            incomplete
         </button>
         <button
-            className={`btn ${statusFilter === "inProgress" ? "btn-primary" : "btn-secondary"}`}
-            onClick={() => setStatusFilter("inProgress")}
+            className={`btn ${statusFilter === true ? "btn-primary" : "btn-secondary"}`}
+            onClick={() => setStatusFilter(true)}
         >
-            In Progress
-        </button>
-        <button
-            className={`btn ${statusFilter === "complete" ? "btn-primary" : "btn-secondary"}`}
-            onClick={() => setStatusFilter("complete")}
-        >
-            Complete
+            Completed
         </button>
     </div>
     {console.log(statusFilter)}

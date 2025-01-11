@@ -11,9 +11,8 @@ export const filterByPriorityAndDueDate = (filter, tasks) =>{
       )
 }
 export const filterByTaskStatus = (filter, tasks) => {
-    console.log(filter)
-    console.log(tasks)
     return tasks.filter((task) =>{
-        return task.status?.toLowerCase().includes(filter.toLowerCase())
+        const isComplete = task.status === true; 
+        return filter === isComplete;
     })  
 }

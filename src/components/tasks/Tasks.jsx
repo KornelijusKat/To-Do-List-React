@@ -23,6 +23,7 @@ const Tasks = ({projectId, filter, statusFilter}) => {
     },[user, loading, projectId])
     useEffect(() => {
         let filtered = tasks;
+        console.log(filtered)
         if (statusFilter !== "all") {
             filtered = taskFilter.filterByTaskStatus(statusFilter, filtered);
           
