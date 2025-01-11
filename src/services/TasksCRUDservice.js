@@ -51,6 +51,22 @@ export const updateTask = (projectId, taskId, data) => {
     .doc(taskId)
     .set(data, { merge: true });
 };
+export const updateTaskStatus = (projectId, taskId, status) => {
+  firebase.firestore()
+    .collection('projects')
+    .doc(projectId)
+    .collection('tasks')
+    .doc(taskId)
+    .update({ status })
+    .then(() => {
+      console.log("Task status updated successfully!");
+    })
+    .catch((error) => {
+      console.error("Error updating task status: ", error);
+    });
+};
+
+
 
 export const countTasks = async (projectId) => {
   try {

@@ -1,11 +1,17 @@
 import { Link, useParams } from "react-router-dom";
 import "./_task.scss";
+import * as service from '../../services/TasksCRUDservice';
 
 
 
 const Task = (props) =>{
+
     const { id }= useParams()
     console.log(props.id)
+    const updateStatus= () => {
+        const newStatus = !props.status;
+        service.updateTaskStatus(id, props.id, newStatus)
+    }
     return (
         
         <div className="card task">
@@ -20,6 +26,7 @@ const Task = (props) =>{
             >
                 Update Task
             </Link>
+            <button  className="btn btn-sm btn-outline-primary border-0 me-2" onClick={updateStatus}>Change status</button>
         </div>
     );
 };
