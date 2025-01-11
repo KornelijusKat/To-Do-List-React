@@ -52,4 +52,17 @@ export const updateTask = (projectId, taskId, data) => {
     .set(data, { merge: true });
 };
 
-
+export const countTasks = async (projectId) => {
+  try {
+    const snapshot = await firebase.firestore()
+      .collection('projects')
+      .doc(projectId)
+      .collection('tasks')
+      .get();
+      
+    return snapshot.size;
+  } catch (error) {
+    console.error("Error counting tasks:", error);
+    return 0;
+  }
+};
