@@ -59,12 +59,6 @@ const ProjectView = () => {
             incomplete
         </button>
         <button
-            className={`btn ${statusFilter === "inProgress" ? "btn-primary" : "btn-secondary"}`}
-            onClick={() => setStatusFilter("inProgress")}
-        >
-            In Progress
-        </button>
-        <button
             className={`btn ${statusFilter === true ? "btn-primary" : "btn-secondary"}`}
             onClick={() => setStatusFilter(true)}
         >
