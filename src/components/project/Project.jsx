@@ -1,9 +1,23 @@
-import { Link, useParams, useNavigate } from "react-router-dom";
-import * as service from "../../services/ProjectCRUDservices";
+import { Link } from "react-router-dom";
+import * as tasksService from "../../services/TasksCRUDservice.js"
+import { useState, useEffect } from "react";
 
 const Project =(props) =>{
-    const navigate = useNavigate();
-    const {id} = useParams();
+    const [taskCount, setTaskCount] = useState(null)
+
+    useEffect(() => {
+        const fetchTaskCount = async () => {
+            try {
+                const counter = await tasksService.countTasks(props.id);
+                setTaskCount(counter);
+            } catch (error) {
+                console.error(error);
+                setCount(0);
+            }
+        };
+
+        fetchTaskCount();
+    }, [props.id]);
 
     return(
         <>
@@ -15,7 +29,7 @@ const Project =(props) =>{
             <p>{props.id}</p>
             <p className="card-text mb-1"><strong>Start Date:</strong> {props.from}</p>
             <p className="card-text mb-1"><strong>End Date:</strong> {props.to}</p>
-            <p className="card-text text-secondary">10 Tasks</p>
+            <p className="card-text text-secondary">{taskCount !== null ? `Tasks: ${taskCount}` : "Loading..."}</p>
         </div>
         <div>
             <Link
