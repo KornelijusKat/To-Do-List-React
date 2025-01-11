@@ -9,8 +9,8 @@ const ProjectView = () => {
     const navigate = useNavigate()
     const {id} = useParams();
     const [project, setProject] = useState(null);
-
-
+    const [filter, setFilter] = useState("");
+    const [statusFilter, setStatusFilter] = useState('all');
     useEffect(()=>{
         showById(setProject, id)
     },[id])
@@ -36,8 +36,44 @@ const ProjectView = () => {
         </div>
         <div className="tasks-section">
         <h2> Tasks </h2>
+        <div className="filter-container">
+          <input
+            type="text"
+            placeholder="Filter tasks by due date or priority"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+            className="filter-input"
+          />
+        </div>
+        <div className="filter-container">
+        <button
+            className={`btn ${statusFilter === "all" ? "btn-primary" : "btn-secondary"}`}
+            onClick={() => setStatusFilter("all")}
+        >
+            All
+        </button>
+        <button
+            className={`btn ${statusFilter === "toDo" ? "btn-primary" : "btn-secondary"}`}
+            onClick={() => setStatusFilter("toDo")}
+        >
+            ToDo
+        </button>
+        <button
+            className={`btn ${statusFilter === "inProgress" ? "btn-primary" : "btn-secondary"}`}
+            onClick={() => setStatusFilter("inProgress")}
+        >
+            In Progress
+        </button>
+        <button
+            className={`btn ${statusFilter === "complete" ? "btn-primary" : "btn-secondary"}`}
+            onClick={() => setStatusFilter("complete")}
+        >
+            Complete
+        </button>
+    </div>
+    {console.log(statusFilter)}
         <div className="tasks-container">
-            <Tasks projectId={id}></Tasks>
+            <Tasks projectId={id} filter={filter} statusFilter={statusFilter}></Tasks>
         </div>
         </div>
     </div>

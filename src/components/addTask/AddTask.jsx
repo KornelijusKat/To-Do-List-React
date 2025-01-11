@@ -16,7 +16,8 @@ const AddTask = ()=>{
         name:'',
         description:'',
         to:'',
-        priority:''
+        priority:'',
+        status: 'toDo'
     })
     console.log(`${id} hi`);
     const navigate = useNavigate()
