@@ -10,7 +10,7 @@ const User =()=>{
         if(loading) return;
         if(!user) navigate('/');
         getUserData(user, setUserData)
-    },[user, loading ])
+    },[user, loading])
     const handleClick = () =>{
         navigate('/addproject')
     }

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import {
   auth,
   registerWithEmailAndPassword,
 } from "../../services/AuthServices";
 import "./_register.scss";
-import { useGlobalContext } from "../../context/Context";
+import * as authError from "../../helpers/authError"
 
 const Register = () => {
   const [userData, setUserData] = useState({
@@ -14,7 +14,6 @@ const Register = () => {
     email: "",
     password: "",
   });
-  const { firebaseAuthErrors } = useGlobalContext()
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(""); 
   const [user, loading] = useAuthState(auth); 
@@ -40,7 +39,7 @@ const Register = () => {
         userData.password
       );
     }catch(err){
-      setErrorMessage(firebaseAuthErrors[err.code] || "Something's wrong")
+      setErrorMessage(authError.firebaseAuthErrors[err.code] || "Something's wrong")
       console.log(err.code)
     }
   };

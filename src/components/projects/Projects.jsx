@@ -7,6 +7,8 @@ import ProjectList from "../projectList/ProjectList";
 import { useGlobalContext } from "../../context/Context";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import "./_projects.scss";
+import Loading from "../loading/Loading"
+
 
 const Projects = () =>{
     const[user, loading, error] = useAuthState(auth)
@@ -15,6 +17,9 @@ const Projects = () =>{
             service.deleteProject(state.modalId)
             dispatch({ type: "TOGGLE_MODAL", payload: { showModal: false } });           
             }
+    if (loading) {
+        return <Loading />;
+    }
     return(
         <div className="projects-container">
             {state.showModal && <DeleteModal deleteRecord={() =>deleteProject()} />}
