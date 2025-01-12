@@ -65,7 +65,7 @@ const ProjectView = () => {
             className={`btn ${statusFilter === false ? "btn-primary" : "btn-secondary"}`}
             onClick={() => setStatusFilter(false)}
         >
-            incomplete
+            Incomplete
         </button>
         <button
             className={`btn ${statusFilter === true ? "btn-primary" : "btn-secondary"}`}
