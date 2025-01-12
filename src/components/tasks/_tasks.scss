@@ -1,16 +1,6 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins/button-base" as *;
 
-.tasks-container {
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    gap: 1.5rem;
-    justify-content: start; 
-    align-items: start; 
-    max-width: 1500px; 
-    margin: 0 auto; 
-    padding: 2rem; 
-}
 
 .add-task-btn {
     @include buttonBaseStyle($primary-color, $secondary-color);
@@ -21,7 +11,8 @@
 }
 
 .task {
-    width: 100%; 
+    width: 100%;
+    min-width: 300px; 
     max-width: 400px; 
     background: $background-color2;
     border-radius: 8px;
