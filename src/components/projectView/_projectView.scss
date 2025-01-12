@@ -30,6 +30,7 @@
       color: $text-color;
       text-align: center;
       flex: 1;
+      margin-right: 100px;
     }
   }
 
@@ -71,22 +72,21 @@
     margin: 1rem 0;
 
     .filter-input {
-        width: 100%;
-        max-width: 500px;
-        padding: 0.75rem 1rem;
-        font-size: 14px;
-        border: 2px solid $primary-color;
-        border-radius: 8px;
-        background-color: $background-color1;
-        color: $text-color;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
+      width: 100%;
+      max-width: 500px;
+      padding: 0.75rem 1rem;
+      font-size: 14px;
+      border: 2px solid $primary-color;
+      border-radius: 8px;
+      background-color: $background-color1;
+      color: $text-color;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
 
-        &::placeholder {
-            color: $text-color3;
-        }
+      &::placeholder {
+        color: $text-color3;
+      }
     }
-
 
     .btn {
       @include buttonBaseStyle($primary-color, $secondary-color);
@@ -96,7 +96,7 @@
       border-radius: 8px;
 
       &.btn-primary {
-        background-color: $primary-color; 
+        background-color: $primary-color;
         color: $text-color2;
         &:hover {
           background-color: $secondary-color;
@@ -104,7 +104,7 @@
       }
 
       &.btn-secondary {
-        background-color: $background-color2; 
+        background-color: $background-color2;
         color: $text-color3;
         &:hover {
           background-color: $background-color1;
@@ -113,19 +113,24 @@
 
       &:focus {
         outline: none;
-        box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2); 
+        box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
       }
     }
   }
 
   .tasks-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    gap: 2rem 4rem; 
-    justify-content: start;
-    align-items: start; 
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+    gap: 3rem; 
+    width: 100%;
+    padding: 2rem 0; 
+  }
+
+  .add-task-btn {
+    margin-bottom: 1.5rem;
+    @include buttonBaseStyle($primary-color, $secondary-color);
+    width: auto;
+    padding: 1rem 2rem;
+    text-decoration: none;
   }
 }
