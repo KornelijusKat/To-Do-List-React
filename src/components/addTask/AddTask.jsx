@@ -1,4 +1,5 @@
 import * as service from '../../services/TasksCRUDservice';
+
 import { useAuthState } from "react-firebase-hooks/auth";
 import {useState, useEffect } from "react";
 import {auth} from "../../services/AuthServices";
@@ -19,7 +20,6 @@ const AddTask = ()=>{
         priority:'',
         status: false
     })
-    console.log(`${id} hi`);
     const navigate = useNavigate()
     const handleChange = (e)=>{
         e.preventDefault();
@@ -47,6 +47,21 @@ const AddTask = ()=>{
     const handleNavigateHome = () =>{
         navigate(`/projectview/${id}`);
     }
+    useEffect(() => {
+        if (taskId) {
+            service.showTaskById(id, taskId, (task) => {
+                setFormData({
+                    name: task.name || '',
+                    description: task.description || '',
+                    to: task.to || '',
+                    priority: task.priority || '',
+                    status: task.status || false
+                });
+            });
+        }
+        if (loading) return;
+        if (!user) navigate('/');
+    }, [id, taskId, user, loading, navigate]);
     return(
          <div className="container container-addproject">
                         <div className="row addproject-header d-flex justify-content-between">

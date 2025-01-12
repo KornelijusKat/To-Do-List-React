@@ -32,6 +32,13 @@ const reducer = (state, action) => {
                     project.id === action.payload.id ? action.payload : project
                 )
             }
+        case "TOGGLE_MODAL":
+            return {
+                ...state,
+                showModal: action.payload?.showModal ?? !state.showModal,
+                modalId: action.payload?.Id || null,
+            };
+
         default:
             throw new Error(`No such action type: ${action.type}`)
     }

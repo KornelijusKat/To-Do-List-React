@@ -1,14 +1,27 @@
 import { Link, useParams } from "react-router-dom";
 import "./_task.scss";
 import * as service from '../../services/TasksCRUDservice';
-
+import { useGlobalContext } from "../../context/Context";
 
 
 const Task = (props) =>{
-
     const { id }= useParams()
+    const { state,dispatch} = useGlobalContext()
     console.log(props.id)
-    const updateStatus= () => {
+    const deleteTask = () =>{       
+        console.log(id)
+        service.deleteTask(id, props.id)
+        dispatch({ type: "TOGGLE_MODAL", payload: { showModal: false } }); // Close the moda     
+    }
+    const openDeleteModal = () => {
+        console.log("Opening modal..." + props.id); 
+        dispatch({ 
+            type: "TOGGLE_MODAL", 
+            payload: { showModal: true, Id: props.id },
+        });
+    };
+    
+    const updateStatus = () => {
         const newStatus = !props.status;
         service.updateTaskStatus(id, props.id, newStatus)
     }
@@ -27,6 +40,8 @@ const Task = (props) =>{
                 Update Task
             </Link>
             <button  className="btn btn-sm btn-outline-primary border-0 me-2" onClick={updateStatus}>Change status</button>
+            <button  className="btn btn-sm btn-outline-primary border-0 me-2" onClick={openDeleteModal} >Delete Task</button>
+           
         </div>
     );
 };

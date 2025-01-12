@@ -4,9 +4,13 @@ import { showById } from "../../services/ProjectCRUDservices";
 import Loading from "../loading/Loading";
 import Tasks from "../tasks/Tasks";
 import "./_projectView.scss";
+import { useGlobalContext } from "../../context/Context";
+import DeleteModal from "../DeleteModal/DeleteModal";
+import * as service from '../../services/TasksCRUDservice'
 
 const ProjectView = () => {
     const navigate = useNavigate()
+    const {state, dispatch} = useGlobalContext()
     const {id} = useParams();
     const [project, setProject] = useState(null);
     const [filter, setFilter] = useState("");
@@ -14,16 +18,21 @@ const ProjectView = () => {
     useEffect(()=>{
         showById(setProject, id)
     },[id])
-
+  
     const handleNavigateHome = () =>{
         navigate('/projects');
     }
-
+    const deleteTask = () =>{
+        service.deleteTask(id, state.modalId)
+        dispatch({ type: "TOGGLE_MODAL", payload: { showModal: false } });  
+        }
     if (!project) {
         return(<Loading/>);
     }
     return(
+    <>  
     <div className="project-view-container">
+        {state.showModal && <DeleteModal deleteRecord={() =>deleteTask()} />}
         <div className="header">
             <button className="btn btn-back" onClick={handleNavigateHome}>Back</button>
             <h1>Project Details</h1>
@@ -65,12 +74,13 @@ const ProjectView = () => {
             Completed
         </button>
     </div>
-    {console.log(statusFilter)}
         <div className="tasks-container">
             <Tasks projectId={id} filter={filter} statusFilter={statusFilter}></Tasks>
         </div>
         </div>
-    </div>
+      
+    </div>    
+    </>
     )
 }
 
