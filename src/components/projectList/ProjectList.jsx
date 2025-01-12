@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
 import Project from "../project/Project";
+import "./_projectList.scss";
 const ProjectList = (props) =>{
     return(
-        <div className="row row-cols-1 row-cols-md-3 g-4">
+        <div className="project-list">
             {props.data?.map(project=> <Project
             id= {project.id}
             name= {project.name}

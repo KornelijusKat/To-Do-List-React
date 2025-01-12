@@ -1,0 +1,45 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins/button-base" as *;
+
+.projects-container {
+  background: linear-gradient(
+    to bottom,
+    $background-color1,
+    $background-color2
+  );
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: $font-family-primary;
+  color: $text-color;
+
+  .header {
+    margin-bottom: 2rem;
+  }
+
+  .content {
+    margin-top: 2rem;
+
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.5;
+      color: $text-color;
+      text-align: center;
+
+      a {
+        color: $primary-color;
+        text-decoration: none;
+        font-weight: 700;
+
+        &:hover {
+          color: $secondary-color;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .project-list-container {
+    margin-top: 3rem;
+  }
+}

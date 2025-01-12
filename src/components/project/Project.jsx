@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import * as tasksService from "../../services/TasksCRUDservice.js"
 import { useState, useEffect } from "react";
 import { useGlobalContext } from "../../context/Context.jsx";
+import "./_project.scss";
 
 const Project =(props) =>{
     const [taskCount, setTaskCount] = useState(null)
@@ -30,30 +31,29 @@ const Project =(props) =>{
     }, [props.id]);
     return(
         <>
-            <div className="col" key={props.id}>
-            <div className="card h-100">
-    <div className="card-body d-flex justify-content-between align-items-start">
-        <div>
+            <div className="col project" key={props.id}>
+            <div className="card h-100 project-card">
+    <div className="card-body d-flex justify-content-between align-items-start project-card-body">
+        <div className="project-details">
             <h5 className="card-title">{props.name}</h5>
-            <p>{props.id}</p>
-            <p className="card-text mb-1"><strong>Start Date:</strong> {props.from}</p>
-            <p className="card-text mb-1"><strong>End Date:</strong> {props.to}</p>
-            <p className="card-text text-secondary">{taskCount == 0 
+            <p className="card-text mb-1 project-date"><strong>Start Date:</strong> {props.from}</p>
+            <p className="card-text mb-1 project-date"><strong>End Date:</strong> {props.to}</p>
+            <p className="card-text text-secondary project-tasks">{taskCount == 0 
             ? <Link to={`/projects/${props.id}/addtask`} style={{ textDecoration: 'none' }}> Create a task </Link> 
             : taskCount !== null 
             ? `Tasks: ${taskFinished}/${taskCount}` 
             : "Loading..."}</p>
         </div>
-        <div>
+        <div className="project-actions">
             <Link
                 to={`/updateproject/${props.id}`}
-                className="btn btn-sm btn-outline-primary border-0 me-2"
+                className="btn btn-sm btn-outline-primary border-0 me-2 project-action-btn"
             >
                 <i className="bi bi-pencil"></i>
             </Link>
             <Link
                 to={`/projectview/${props.id}`}
-                className="btn btn-sm btn-outline-primary border-0 me-2"
+                className="btn btn-sm btn-outline-primary border-0 me-2 project-action-btn"
             >
                 <i className="bi bi-clipboard"></i>
             </Link>
