@@ -8,6 +8,7 @@ import { useGlobalContext } from "../../context/Context";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import "./_projects.scss";
 import Loading from "../loading/Loading"
+import "./_projects.scss";
 
 
 const Projects = () =>{
