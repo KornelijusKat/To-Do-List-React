@@ -13,16 +13,21 @@ import flowersImage from "../../assets/img/flowers.png";
 import personImage from "../../assets/img/person.png";
 import { useNavigate } from "react-router-dom";
 import Loading from "../loading/Loading";
+import { useEffect } from "react";
 
 const AuthLayout = () => {
-  const [loading] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const { state, dispatch } = useGlobalContext();
   const navigate = useNavigate();
   const toggleAuthView = () => {
     dispatch({ type: "TOGGLE_AUTH_VIEW" });
     navigate(state.isLogin ? "/register" : "/login");
   };
-
+  useEffect(() => {
+    if (user) {
+      navigate("/projects"); // Redirect authenticated users
+    }
+  }, [loading, navigate]);
   if(loading){
     return(<Loading/>);
   }

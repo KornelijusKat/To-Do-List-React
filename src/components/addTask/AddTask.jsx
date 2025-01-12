@@ -49,7 +49,7 @@ const AddTask = ()=>{
         navigate(`/projectview/${id}`)
     }
     const handleNavigateHome = () =>{
-        navigate(`/projectview/${id}`);
+        navigate(-1);
     }
     useEffect(() => {
         if (taskId) {

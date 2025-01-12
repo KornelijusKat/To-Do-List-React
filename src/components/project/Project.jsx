@@ -59,7 +59,7 @@ const Project =(props) =>{
             </Link>
             <button
                 className="btn btn-sm btn-danger"
-                disabled={taskCount !== 0} // Disable if taskCount is not 0
+                disabled={taskCount !== taskFinished || taskCount === null} 
                 onClick={() => openDeleteModal()}
                             >
                 Delete 
