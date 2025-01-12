@@ -6,6 +6,7 @@ import Header from "../app/header/Header";
 import ProjectList from "../projectList/ProjectList";
 import { useGlobalContext } from "../../context/Context";
 import DeleteModal from "../DeleteModal/DeleteModal";
+import "./_projects.scss";
 
 const Projects = () =>{
     const[user, loading, error] = useAuthState(auth)
@@ -15,14 +16,14 @@ const Projects = () =>{
             dispatch({ type: "TOGGLE_MODAL", payload: { showModal: false } });           
             }
     return(
-        <div className="container">
+        <div className="projects-container">
             {state.showModal && <DeleteModal deleteRecord={() =>deleteProject()} />}
             <Header/>
             {state.projects.length > 0? 
-                <div className="mt-4">
+                <div className="projects-list-container">
                     <ProjectList data={state.projects}/>
                 </div> : 
-                <div className="mt-4">
+                <div className="container">
                     <h1>Ready to start? 
                         <Link style={{ textDecoration: 'none' }} to={'/addproject'}> Create a new project here</Link>
                     </h1>
