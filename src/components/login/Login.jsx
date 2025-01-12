@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, signInWithEmailPassword } from "../../services/AuthServices";
-import { useGlobalContext } from "../../context/Context";
+import * as authError from "../../helpers/authError"
 
 const Login = () => {
-  const {firebaseAuthErrors} = useGlobalContext()
   const [errorMessage, setErrorMessage] = useState("");
   const [user, loading] = useAuthState(auth);
   const [userData, setUserData] = useState({
@@ -33,7 +32,7 @@ const Login = () => {
       if(response) 
         navigate("/projects")
     }catch(err){
-      setErrorMessage(firebaseAuthErrors[err.code] || "Something's wrong")
+      setErrorMessage(authError.firebaseAuthErrors[err.code] || "Something's wrong")
       console.log(err.code)
     }
   }
