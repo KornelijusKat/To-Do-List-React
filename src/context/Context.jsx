@@ -6,6 +6,8 @@ import * as projService from "../services/ProjectCRUDservices";
 const AppContext = createContext(null);
 const initialState = {
     isLogin: true,
+    showModal: false, 
+    modalId: null,
     projects: []
 }
 const AppProvider = ({children}) => {

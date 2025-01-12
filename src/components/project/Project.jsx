@@ -1,11 +1,20 @@
 import { Link } from "react-router-dom";
 import * as tasksService from "../../services/TasksCRUDservice.js"
 import { useState, useEffect } from "react";
+import { useGlobalContext } from "../../context/Context.jsx";
 
 const Project =(props) =>{
     const [taskCount, setTaskCount] = useState(null)
     const [taskFinished, setTaskFinished] = useState(null)
 
+    const {dispatch} = useGlobalContext()
+    const openDeleteModal = () => {
+        console.log("Opening modal..." + props.id); 
+        dispatch({ 
+            type: "TOGGLE_MODAL", 
+            payload: { showModal: true, Id: props.id },
+        });
+    };
     useEffect(() => {
         const fetchTaskCount = async () => {
             try {
@@ -50,6 +59,13 @@ const Project =(props) =>{
             >
                 <i className="bi bi-clipboard"></i>
             </Link>
+            <button
+                className="btn btn-sm btn-danger"
+                disabled={taskCount !== 0} // Disable if taskCount is not 0
+                onClick={() => openDeleteModal()}
+                            >
+                Delete 
+            </button>
         </div>
     </div>
 </div>
