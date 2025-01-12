@@ -19,7 +19,9 @@ const Projects = () =>{
                     <ProjectList data={state.projects}/>
                 </div> : 
                 <div className="mt-4">
-                    <h1>No projects</h1>
+                    <h1>Ready to start? 
+                        <Link style={{ textDecoration: 'none' }} to={'/addproject'}> Create a new project here</Link>
+                    </h1>
                 </div>
             }
         </div>

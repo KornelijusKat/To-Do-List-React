@@ -4,21 +4,23 @@ import { useState, useEffect } from "react";
 
 const Project =(props) =>{
     const [taskCount, setTaskCount] = useState(null)
+    const [taskFinished, setTaskFinished] = useState(null)
 
     useEffect(() => {
         const fetchTaskCount = async () => {
             try {
                 const counter = await tasksService.countTasks(props.id);
+                const finishCounter = await tasksService.countFinishedTasks(props.id)
                 setTaskCount(counter);
+                setTaskFinished(finishCounter)
             } catch (error) {
                 console.error(error);
                 setCount(0);
+                setTaskFinished(0)
             }
         };
-
         fetchTaskCount();
     }, [props.id]);
-
     return(
         <>
             <div className="col" key={props.id}>
@@ -29,7 +31,11 @@ const Project =(props) =>{
             <p>{props.id}</p>
             <p className="card-text mb-1"><strong>Start Date:</strong> {props.from}</p>
             <p className="card-text mb-1"><strong>End Date:</strong> {props.to}</p>
-            <p className="card-text text-secondary">{taskCount !== null ? `Tasks: ${taskCount}` : "Loading..."}</p>
+            <p className="card-text text-secondary">{taskCount == 0 
+            ? <Link to={`/projects/${props.id}/addtask`} style={{ textDecoration: 'none' }}> Create a task </Link> 
+            : taskCount !== null 
+            ? `Tasks: ${taskFinished}/${taskCount}` 
+            : "Loading..."}</p>
         </div>
         <div>
             <Link

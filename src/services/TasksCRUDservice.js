@@ -82,3 +82,19 @@ export const countTasks = async (projectId) => {
     return 0;
   }
 };
+
+export const countFinishedTasks = async (projectId) => {
+  try {
+    const snapshot = await firebase.firestore()
+      .collection('projects')
+      .doc(projectId)
+      .collection('tasks')
+      .where('status', '==', true)
+      .get();
+      
+    return snapshot.size;
+  } catch (error) {
+    console.error("Error counting tasks:", error);
+    return 0;
+  }
+};
