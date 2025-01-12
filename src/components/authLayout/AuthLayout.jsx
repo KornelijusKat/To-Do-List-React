@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../loading/Loading";
 
 const AuthLayout = () => {
-  const [user, loading, error] = useAuthState(auth);
+  const [loading] = useAuthState(auth);
   const { state, dispatch } = useGlobalContext();
   const navigate = useNavigate();
   const toggleAuthView = () => {

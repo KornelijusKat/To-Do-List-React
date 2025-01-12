@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import * as service from "../../services/ProjectCRUDservices"
 import { useAuthState} from "react-firebase-hooks/auth"
@@ -18,7 +17,6 @@ const Projects = () =>{
     return(
         <div className="container">
             {state.showModal && <DeleteModal deleteRecord={() =>deleteProject()} />}
-            {console.log(state)}
             <Header/>
             {state.projects.length > 0? 
                 <div className="mt-4">

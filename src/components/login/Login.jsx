@@ -13,8 +13,6 @@ const Login = () => {
     password: "",
   });
   const navigate = useNavigate();
-
-
   const handleChange = (e) => {
     setUserData({
       ...userData,

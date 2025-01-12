@@ -6,10 +6,8 @@ import { useGlobalContext } from "../../context/Context.jsx";
 const Project =(props) =>{
     const [taskCount, setTaskCount] = useState(null)
     const [taskFinished, setTaskFinished] = useState(null)
-
     const {dispatch} = useGlobalContext()
     const openDeleteModal = () => {
-        console.log("Opening modal..." + props.id); 
         dispatch({ 
             type: "TOGGLE_MODAL", 
             payload: { showModal: true, Id: props.id },
