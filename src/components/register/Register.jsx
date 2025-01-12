@@ -8,7 +8,6 @@ import {
 import "./_register.scss";
 import { useGlobalContext } from "../../context/Context";
 
-
 const Register = () => {
   const [userData, setUserData] = useState({
     name: "",
@@ -16,12 +15,10 @@ const Register = () => {
     password: "",
   });
   const { firebaseAuthErrors } = useGlobalContext()
-  const [confirmPassword, setConfirmPassword] = useState(""); // Separate confirmPassword state
-  const [errorMessage, setErrorMessage] = useState(""); // Error handling
-  const [user, loading] = useAuthState(auth); // Firebase auth
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState(""); 
+  const [user, loading] = useAuthState(auth); 
   const navigate = useNavigate();
-
-
   const handleChange = (e) => {
     setUserData({
       ...userData,
@@ -42,24 +39,19 @@ const Register = () => {
         userData.email,
         userData.password
       );
-      console.log(result)
     }catch(err){
       setErrorMessage(firebaseAuthErrors[err.code] || "Something's wrong")
       console.log(err.code)
     }
   };
-
-
   const handleError = () =>{
     if(errorMessage)return "border-danger";
  return ""
  }
-
   useEffect(() => {
     if (loading) return;
     if (user) navigate("/projects");
   }, [loading, user, navigate]);
-
   return (
     <div className="container register-container d-flex align-items-center justify-content-center">
       <div className="text-center">

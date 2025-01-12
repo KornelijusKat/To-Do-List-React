@@ -15,20 +15,15 @@ const Tasks = ({projectId, filter, statusFilter}) => {
     useEffect(()=>{
         if(loading) return;
         if (user && projectId) {
-            console.log(filter)
             service.getAllTasks(projectId, (task) => {setTasks(task)
             setFilteredTasks(tasks)}); 
         }
-        console.log(tasks)
     },[user, loading, projectId])
     useEffect(() => {
         let filtered = tasks;
         console.log(filtered)
         if (statusFilter !== "all") {
             filtered = taskFilter.filterByTaskStatus(statusFilter, filtered);
-          
-            console.log(filtered)
-            console.log('hi')
           }
         if (filter) {
           filtered = taskFilter.filterByPriorityAndDueDate(filter, filtered);
@@ -37,8 +32,7 @@ const Tasks = ({projectId, filter, statusFilter}) => {
       }, [filter, statusFilter, tasks]);
     
     if(loading) return (<Loading/>)
-    return (
-        
+    return (  
         <div>
             <Link
                 to={`/projects/${projectId}/addtask`}

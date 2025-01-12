@@ -3,20 +3,17 @@ import { getUserData, auth, logout } from "../../services/AuthServices";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 const User =()=>{
-    const [user, loading, error] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     const [userData, setUserData] = useState({})
     const navigate = useNavigate();
-
     useEffect(()=>{
         if(loading) return;
         if(!user) navigate('/');
         getUserData(user, setUserData)
     },[user, loading ])
-
     const handleClick = () =>{
         navigate('/addproject')
     }
-
     return(
         <div className="row nav-main">
             <div className="col nav-user">

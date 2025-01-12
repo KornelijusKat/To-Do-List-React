@@ -1,13 +1,14 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins/button-base" as *;
 .container-addproject{
-    background: linear-gradient(
-        to bottom,
-        $background-color1,
-        $background-color2
-      );
     margin:auto;
     padding:34px;
+    .invalid-feedback {
+        color: red;
+        font-size: 0.875em;
+        margin-top: 0.25rem;
+        display: block;
+    }
     .addproject-header{
         font-size: 19px;
         font-weight: 600;
