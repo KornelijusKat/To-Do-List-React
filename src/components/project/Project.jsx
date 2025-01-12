@@ -58,7 +58,7 @@ const Project =(props) =>{
                 <i className="bi bi-clipboard"></i>
             </Link>
             <button
-                className="btn btn-sm btn-danger"
+                className="btn btn-sm btn-danger project-delete-btn"
                 disabled={taskCount !== taskFinished || taskCount === null} 
                 onClick={() => openDeleteModal()}
                             >
