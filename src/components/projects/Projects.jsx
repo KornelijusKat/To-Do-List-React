@@ -5,7 +5,7 @@ import {auth} from "../../services/AuthServices"
 import Header from "../app/header/Header";
 import ProjectList from "../projectList/ProjectList";
 import { useGlobalContext } from "../../context/Context";
-import DeleteModal from "../DeleteModal/DeleteModal";
+import DeleteModal from "../deleteModal/DeleteModal";
 import "./_projects.scss";
 import Loading from "../loading/Loading"
 import "./_projects.scss";
