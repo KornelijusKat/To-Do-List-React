@@ -48,7 +48,7 @@ const ProjectView = () => {
         <div className="filter-container">
           <input
             type="text"
-            placeholder="Filter tasks by due date or priority"
+            placeholder="Filter tasks by name, due date or priority"
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
             className="filter-input"
